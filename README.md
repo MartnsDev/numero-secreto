@@ -1,3 +1,4 @@
+````
  public Page<PagamentoDto> obterTodos(Pageable paginacao) {
         return repository
                 .findAll(paginacao)
