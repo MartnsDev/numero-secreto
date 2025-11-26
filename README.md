@@ -5,3 +5,28 @@
     }
 
     
+public PagamentoDto obterPorId(Long id) {
+        Pagamento pagamento = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException());
+
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+    public PagamentoDto criarPagamento(PagamentoDto dto) {
+        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
+        pagamento.setStatus(Status.CRIADO);
+        repository.save(pagamento);
+
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+      public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
+        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
+        pagamento.setId(id);
+        pagamento = repository.save(pagamento);
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+    public void excluirPagamento(Long id) {
+        repository.deleteById(id);
+    }
