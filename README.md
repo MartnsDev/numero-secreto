@@ -21,3 +21,7 @@ public class ServerApplication {
     }
 
 }
+
+
+
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
