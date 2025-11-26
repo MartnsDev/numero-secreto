@@ -1,33 +1,23 @@
 ````
- public Page<PagamentoDto> obterTodos(Pageable paginacao) {
-        return repository
-                .findAll(paginacao)
-                .map(p -> modelMapper.map(p, PagamentoDto.class));
+server.port=8081
+
+spring.application.name=server
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+eureka.client.serviceUrl.defaultZone=http://localhost:8081/eureka
+
+package br.com.alurafood.server;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServe;
+
+@SpringBootApplication
+@EnableEurekaServer
+public class ServerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ServerApplication.class, args);
     }
 
-    
-public PagamentoDto obterPorId(Long id) {
-        Pagamento pagamento = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException());
-
-        return modelMapper.map(pagamento, PagamentoDto.class);
-    }
-
-    public PagamentoDto criarPagamento(PagamentoDto dto) {
-        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
-        pagamento.setStatus(Status.CRIADO);
-        repository.save(pagamento);
-
-        return modelMapper.map(pagamento, PagamentoDto.class);
-    }
-
-      public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
-        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
-        pagamento.setId(id);
-        pagamento = repository.save(pagamento);
-        return modelMapper.map(pagamento, PagamentoDto.class);
-    }
-
-    public void excluirPagamento(Long id) {
-        repository.deleteById(id);
-    }
+}
