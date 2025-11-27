@@ -1,27 +1,26 @@
 ````
-server.port=8081
+1:Gastronomia típica 
 
-spring.application.name=server
-eureka.client.register-with-eureka=false
-eureka.client.fetch-registry=false
-eureka.client.serviceUrl.defaultZone=http://localhost:8081/eureka
+2: danças
 
-package br.com.alurafood.server;
+3: mulheres em destaque 
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServe;
+4: negros em destaque 
 
-@SpringBootApplication
-@EnableEurekaServer
-public class ServerApplication {
+5: artistas
 
-    public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
-    }
+6: atualidade 
 
-}
+7:clima
 
+8: economia
 
+9:beleza naturais (lurismo)
 
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+10: política 
+
+11: industrialização 
+
+12: agropecuária 
+
+13:demografia (população, taxas)
